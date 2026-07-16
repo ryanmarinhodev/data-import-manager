@@ -10,6 +10,6 @@ apps/*/tmp/
 apps/web/*.tsbuildinfo
 apps/web/vite.config.d.ts
 apps/web/vite.config.js
-
+instrucoes_projeto_estudos_ia.pdf
 .DS_Store
 npm-debug.log*

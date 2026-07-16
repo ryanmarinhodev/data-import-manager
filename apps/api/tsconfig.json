@@ -1,0 +1,29 @@
+{
+  "extends": "adonis-preset-ts/tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "outDir": "build",
+    "rootDir": "./",
+    "sourceMap": true,
+    "paths": {
+      "App/*": ["./app/*"],
+      "Config/*": ["./config/*"],
+      "Contracts/*": ["./contracts/*"],
+      "Database/*": ["./database/*"]
+    }
+  },
+  "include": [
+    "../../node_modules/@adonisjs/core/build/adonis-typings/**/*.d.ts",
+    "../../node_modules/@adonisjs/bodyparser/build/adonis-typings/**/*.d.ts",
+    "../../node_modules/@adonisjs/lucid/build/adonis-typings/**/*.d.ts",
+    "app/**/*.ts",
+    "config/**/*.ts",
+    "contracts/**/*.ts",
+    "database/**/*.ts",
+    "start/**/*.ts",
+    "tests/**/*.ts",
+    "test.ts",
+    "server.ts"
+  ],
+  "exclude": ["node_modules", "build", "tmp"]
+}

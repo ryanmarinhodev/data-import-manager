@@ -1,0 +1,26 @@
+{
+  "name": "data-import-manager",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Laboratorio full-stack para estudar backend, APIs, SQL e Vue com dados ficticios.",
+  "workspaces": [
+    "apps/api",
+    "apps/web"
+  ],
+  "scripts": {
+    "dev": "concurrently -n api,web -c blue,green \"npm:dev:api\" \"npm:dev:web\"",
+    "dev:api": "npm run dev --workspace @data-import-manager/api",
+    "dev:web": "npm run dev --workspace @data-import-manager/web",
+    "build": "npm run build --workspaces",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "lint": "npm run lint --workspaces --if-present",
+    "test": "npm run test --workspaces --if-present"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "engines": {
+    "node": ">=20.19 <25",
+    "npm": ">=10"
+  }
+}

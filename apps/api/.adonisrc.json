@@ -1,0 +1,67 @@
+{
+  "typescript": true,
+  "directories": {
+    "config": "config",
+    "public": "public",
+    "contracts": "contracts",
+    "providers": "providers",
+    "database": "database",
+    "migrations": "database/migrations",
+    "seeders": "database/seeders",
+    "resources": "resources",
+    "views": "resources/views",
+    "start": "start",
+    "tmp": "tmp",
+    "tests": "tests"
+  },
+  "namespaces": {
+    "models": "App/Models",
+    "middleware": "App/Middleware",
+    "exceptions": "App/Exceptions",
+    "validators": "App/Validators",
+    "httpControllers": "App/Controllers/Http",
+    "eventListeners": "App/Listeners",
+    "redisListeners": "App/Listeners",
+    "jobs": "App/Jobs"
+  },
+  "preloads": [
+    "./start/routes",
+    "./start/kernel"
+  ],
+  "providers": [
+    "@adonisjs/core",
+    "@adonisjs/lucid"
+  ],
+  "aceProviders": [
+    "@adonisjs/repl/build/providers/ReplProvider"
+  ],
+  "testProviders": [
+    "@japa/preset-adonis/TestsProvider"
+  ],
+  "tests": {
+    "suites": [
+      {
+        "name": "functional",
+        "files": [
+          "tests/functional/**/*.spec(.ts|.js)"
+        ],
+        "timeout": 60000
+      }
+    ]
+  },
+  "metaFiles": [
+    {
+      "pattern": "public/**",
+      "reloadServer": false
+    }
+  ],
+  "commands": [
+    "@adonisjs/lucid/build/commands"
+  ],
+  "aliases": {
+    "App": "app",
+    "Config": "config",
+    "Database": "database",
+    "Contracts": "contracts"
+  }
+}

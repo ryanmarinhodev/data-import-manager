@@ -1,0 +1,15 @@
+node_modules/
+
+.env
+apps/*/.env
+
+apps/*/build/
+apps/*/dist/
+apps/*/coverage/
+apps/*/tmp/
+apps/web/*.tsbuildinfo
+apps/web/vite.config.d.ts
+apps/web/vite.config.js
+
+.DS_Store
+npm-debug.log*

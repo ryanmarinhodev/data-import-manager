@@ -21,7 +21,7 @@ Endpoints e portas iniciais:
 
 - API: `http://localhost:3333`
 - Health check: `http://localhost:3333/health`
-- Web: `http://localhost:5173`
+- Web: `http://localhost:5174`
 
 ## Proxima historia sugerida
 

@@ -17,6 +17,7 @@
     "test": "npm run test --workspaces --if-present"
   },
   "devDependencies": {
+    "@types/source-map-support": "^0.5.10",
     "concurrently": "^8.2.2"
   },
   "engines": {

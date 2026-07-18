@@ -2,6 +2,7 @@
   "extends": "adonis-preset-ts/tsconfig.json",
   "compilerOptions": {
     "baseUrl": ".",
+    "ignoreDeprecations": "6.0",
     "outDir": "build",
     "rootDir": "./",
     "sourceMap": true,

@@ -2,7 +2,7 @@ import axios from 'axios'
 
 export interface HealthResponse {
   status: string
-  timestamp: string
+  date: string
   environment: string
 }
 

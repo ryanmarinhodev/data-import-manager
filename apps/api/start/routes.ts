@@ -8,6 +8,5 @@ Route.get('/', async () => {
 })
 
 Route.get('/health', 'HealthController.index')
-Route.get('/healthh', 'HealthController.index')
 Route.get('/posts', 'PostsController.index')
 Route.get('/summary', 'SummaryController.index')

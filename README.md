@@ -19,8 +19,8 @@ npm run dev
 
 Endpoints e portas iniciais:
 
-- API: `http://localhost:3333`
-- Health check: `http://localhost:3333/health`
+- API: `http://127.0.0.1:3333`
+- Health check: `http://127.0.0.1:3333health`
 - Web: `http://localhost:5174`
 
 ## Proxima historia sugerida

@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { computed, onMounted, ref } from 'vue'
-import { getHealth, getSummary, type HealthResponse } from './services/api'
+import { getHealth, getSummary, SummaryResponse, type HealthResponse } from './services/api'
 
 const health = ref<HealthResponse | null>(null)
+const summary = ref<SummaryResponse | null>(null)
 const error = ref<string | null>(null)
 const isLoading = ref(false)
 
@@ -31,12 +32,14 @@ async function loadHealth() {
 
 async function summaryApi() {
   try {
-    const response = await getSummary()
+    const response = (summary.value = await getSummary())
     console.log(response)
   } catch (error) {
     console.error(error)
   }
 }
+
+console.log('summary:', summary)
 
 onMounted(loadHealth)
 onMounted(summaryApi)
@@ -74,6 +77,17 @@ onMounted(summaryApi)
           <dd>{{ formattedTimestamp }}</dd>
         </div>
       </dl>
+    </section>
+
+    <section class="status-panel" aria-label="Status da API">
+      <div class="status-row">
+        <span class="status-dot" :class="{ online: health?.status === 'ok' }"></span>
+        <div>
+          <p class="label">Resposta Summary</p>
+          <strong>{{ summary?.totalImports ?? error ?? 'Sem resposta' }}</strong>
+        </div>
+        <button @click="summaryApi">Chamar API</button>
+      </div>
     </section>
   </main>
 </template>

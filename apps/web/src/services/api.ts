@@ -25,6 +25,5 @@ export async function getHealth() {
 
 export async function getSummary() {
   const response = await api.get<SummaryResponse>('/summary')
-  console.log(response.data)
   return response.data
 }

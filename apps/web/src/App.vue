@@ -39,8 +39,6 @@ async function summaryApi() {
   }
 }
 
-console.log('summary:', summary)
-
 onMounted(loadHealth)
 onMounted(summaryApi)
 </script>

@@ -7,7 +7,7 @@ declare module '@ioc:Adonis/Core/Env' {
     NODE_ENV: 'development' | 'production' | 'test'
     LOG_LEVEL?: string
     CORS_ORIGIN?: string
-    DB_CONNECTION?: 'sqlite'
+    DB_CONNECTION: 'sqlite'
     SQLITE_DB_PATH?: string
   }
 }

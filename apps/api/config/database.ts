@@ -7,21 +7,22 @@ const databaseConfig: DatabaseConfig = {
 
   // List of available connections
   connections: {
-    pg: {
-      client: 'pg',
+    oracle: {
+      client: 'oracledb',
       connection: {
-        host: Env.get('PG_HOST'),
-        port: Env.get('PG_PORT'),
-        user: Env.get('PG_USER'),
-        password: Env.get('PG_PASSWORD', ''),
-        database: Env.get('PG_DB_NAME'),
+        host: Env.get('ORACLE_HOST'),
+        port: Env.get('ORACLE_PORT'),
+        user: Env.get('ORACLE_USER'),
+        password: Env.get('ORACLE_PASSWORD', ''),
+        database: Env.get('ORACLE_DB_NAME'),
       },
       migrations: {
         naturalSort: true,
       },
       healthCheck: false,
       debug: false,
-    },
+    }
+
   }
 }
 

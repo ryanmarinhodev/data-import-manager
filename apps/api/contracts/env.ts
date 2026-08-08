@@ -8,6 +8,11 @@ declare module '@ioc:Adonis/Core/Env' {
     LOG_LEVEL?: string
     CORS_ORIGIN?: string
     DB_CONNECTION: 'sqlite'
+    ORACLE_HOST: string
+    ORACLE_PORT: number
+    ORACLE_USER: string
+    ORACLE_PASSWORD?: string
+    ORACLE_DB_NAME: string
     SQLITE_DB_PATH?: string
   }
 }

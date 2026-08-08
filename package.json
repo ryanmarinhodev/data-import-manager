@@ -25,6 +25,7 @@
     "npm": ">=10"
   },
   "dependencies": {
-    "@adonisjs/lucid": "^18.4.0"
+    "@adonisjs/lucid": "^18.4.0",
+    "oracledb": "^7.0.1"
   }
 }

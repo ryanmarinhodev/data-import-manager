@@ -17,7 +17,8 @@
     "test": "npm run test --workspaces --if-present"
   },
   "devDependencies": {
-    "concurrently": "^8.2.2"
+    "concurrently": "^8.2.2",
+    "pino-pretty": "^13.2.0"
   },
   "engines": {
     "node": ">=20.19 <25",

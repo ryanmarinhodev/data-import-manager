@@ -6,7 +6,6 @@
     "outDir": "build",
     "rootDir": "./",
     "baseUrl": "./",
-    "ignoreDeprecations": "6.0",
     "sourceMap": true,
     "paths": {
       "App/*": ["./app/*"],

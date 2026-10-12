@@ -1,7 +1,7 @@
-#!/usr/bin/env node
 require('reflect-metadata')
-require('source-map-support/register')
+require('source-map-support').install({ handleUncaughtExceptions: false })
 
 const { Ignitor } = require('@adonisjs/core/build/standalone')
-
-new Ignitor(__dirname).ace().handle(process.argv.splice(2))
+new Ignitor(__dirname)
+  .ace()
+  .handle(process.argv.slice(2))

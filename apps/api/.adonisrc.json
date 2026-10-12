@@ -1,42 +1,28 @@
 {
   "typescript": true,
-  "directories": {
-    "config": "config",
-    "public": "public",
-    "contracts": "contracts",
-    "providers": "providers",
-    "database": "database",
-    "migrations": "database/migrations",
-    "seeders": "database/seeders",
-    "resources": "resources",
-    "views": "resources/views",
-    "start": "start",
-    "tmp": "tmp",
-    "tests": "tests"
-  },
-  "namespaces": {
-    "models": "App/Models",
-    "middleware": "App/Middleware",
-    "exceptions": "App/Exceptions",
-    "validators": "App/Validators",
-    "httpControllers": "App/Controllers/Http",
-    "eventListeners": "App/Listeners",
-    "redisListeners": "App/Listeners",
-    "jobs": "App/Jobs"
+  "commands": [
+    "@adonisjs/core/build/commands/index.js",
+    "@adonisjs/repl/build/commands",
+    "@adonisjs/lucid/build/commands"
+  ],
+  "exceptionHandlerNamespace": "App/Exceptions/Handler",
+  "aliases": {
+    "App": "app",
+    "Config": "config",
+    "Database": "database",
+    "Contracts": "contracts"
   },
   "preloads": [
     "./start/routes",
     "./start/kernel"
   ],
   "providers": [
+    "./providers/AppProvider",
     "@adonisjs/core",
     "@adonisjs/lucid"
   ],
   "aceProviders": [
-    "@adonisjs/repl/build/providers/ReplProvider"
-  ],
-  "testProviders": [
-    "@japa/preset-adonis/TestsProvider"
+    "@adonisjs/repl"
   ],
   "tests": {
     "suites": [
@@ -49,19 +35,13 @@
       }
     ]
   },
+  "testProviders": [
+    "@japa/preset-adonis/TestsProvider"
+  ],
   "metaFiles": [
     {
       "pattern": "public/**",
       "reloadServer": false
     }
-  ],
-  "commands": [
-    "@adonisjs/lucid/build/commands"
-  ],
-  "aliases": {
-    "App": "app",
-    "Config": "config",
-    "Database": "database",
-    "Contracts": "contracts"
-  }
+  ]
 }

@@ -1,30 +1,37 @@
 {
   "extends": "adonis-preset-ts/tsconfig.json",
+  "include": [
+    "**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "build"
+  ],
   "compilerOptions": {
-    "baseUrl": ".",
-    "ignoreDeprecations": "6.0",
     "outDir": "build",
     "rootDir": "./",
+    "baseUrl": "./",
     "sourceMap": true,
     "paths": {
-      "App/*": ["./app/*"],
-      "Config/*": ["./config/*"],
-      "Contracts/*": ["./contracts/*"],
-      "Database/*": ["./database/*"]
-    }
-  },
-  "include": [
-    "../../node_modules/@adonisjs/core/build/adonis-typings/**/*.d.ts",
-    "../../node_modules/@adonisjs/bodyparser/build/adonis-typings/**/*.d.ts",
-    "../../node_modules/@adonisjs/lucid/build/adonis-typings/**/*.d.ts",
-    "app/**/*.ts",
-    "config/**/*.ts",
-    "contracts/**/*.ts",
-    "database/**/*.ts",
-    "start/**/*.ts",
-    "tests/**/*.ts",
-    "test.ts",
-    "server.ts"
-  ],
-  "exclude": ["node_modules", "build", "tmp"]
+      "App/*": [
+        "./app/*"
+      ],
+      "Config/*": [
+        "./config/*"
+      ],
+      "Contracts/*": [
+        "./contracts/*"
+      ],
+      "Database/*": [
+        "./database/*"
+      ]
+    },
+    "types": [
+      "@adonisjs/core",
+      "@adonisjs/repl",
+      "@japa/preset-adonis/build/adonis-typings",
+      "@adonisjs/lucid",
+      "node"
+    ]
+  }
 }

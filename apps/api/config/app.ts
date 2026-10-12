@@ -1,8 +1,25 @@
+import proxyAddr from 'proxy-addr'
 import Env from '@ioc:Adonis/Core/Env'
+import type { ServerConfig } from '@ioc:Adonis/Core/Server'
+import type { LoggerConfig } from '@ioc:Adonis/Core/Logger'
+import type { ProfilerConfig } from '@ioc:Adonis/Core/Profiler'
+import type { ValidatorConfig } from '@ioc:Adonis/Core/Validator'
 
-export const appKey = Env.get('APP_KEY')
+export const appKey: string = Env.get('APP_KEY')
 
-export const http = {
+export const http: ServerConfig = {
+  allowMethodSpoofing: false,
+
+  subdomainOffset: 2,
+
+  generateRequestId: false,
+
+  trustProxy: proxyAddr.compile('loopback'),
+
+  etag: false,
+
+  jsonpCallbackName: 'callback',
+
   cookie: {
     domain: '',
     path: '/',
@@ -11,22 +28,26 @@ export const http = {
     secure: false,
     sameSite: false,
   },
-  trustProxy: () => true,
+
+  forceContentNegotiationTo: 'application/json',
 }
 
-export const logger = {
-  enabled: true,
+export const logger: LoggerConfig = {
   name: Env.get('APP_NAME'),
+
+  enabled: true,
+
   level: Env.get('LOG_LEVEL', 'info'),
+
   prettyPrint: Env.get('NODE_ENV') === 'development',
 }
 
-export const profiler = {
+export const profiler: ProfilerConfig = {
   enabled: true,
-  whitelist: [],
+
   blacklist: [],
+
+  whitelist: [],
 }
 
-export const validator = {
-  messages: {},
-}
+export const validator: ValidatorConfig = {}

@@ -1,29 +1,21 @@
 import Env from '@ioc:Adonis/Core/Env'
-import { DatabaseConfig } from '@ioc:Adonis/Lucid/Database'
+import Application from '@ioc:Adonis/Core/Application'
+import type { DatabaseConfig } from '@ioc:Adonis/Lucid/Database'
 
 const databaseConfig: DatabaseConfig = {
-  // Default connection
-  connection: Env.get('DB_CONNECTION'),
-
-  // List of available connections
+  connection: Env.get('DB_CONNECTION', 'sqlite'),
   connections: {
-    oracle: {
-      client: 'oracledb',
+    sqlite: {
+      client: 'sqlite3',
       connection: {
-        host: Env.get('ORACLE_HOST'),
-        port: Env.get('ORACLE_PORT'),
-        user: Env.get('ORACLE_USER'),
-        password: Env.get('ORACLE_PASSWORD', ''),
-        database: Env.get('ORACLE_DB_NAME'),
+        filename: Application.makePath(Env.get('SQLITE_DB_PATH', 'tmp/db.sqlite3')),
       },
-      migrations: {
-        naturalSort: true,
-      },
+      useNullAsDefault: true,
       healthCheck: false,
       debug: false,
-    }
-
-  }
+      migrations: { naturalSort: true },
+    },
+  },
 }
 
 export default databaseConfig

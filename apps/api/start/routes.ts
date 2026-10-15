@@ -5,5 +5,6 @@ Route.get('/', async () => ({ hello: 'world' }))
 Route.group(() => {
   Route.post('/imports/preview', 'ClientPreviewsController.store')
   Route.post('/customers', 'CustomersController.store')
+  Route.put('/customers/:id', 'CustomersController.update')
   Route.delete('/customers/:id', 'CustomersController.destroy')
 })

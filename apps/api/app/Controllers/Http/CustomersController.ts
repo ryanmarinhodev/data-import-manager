@@ -15,7 +15,30 @@ export default class CustomersController {
 
     const createCustomer = await Customer.create(payload)
 
-    return ctx.response.status(201).json({ message: 'Usuário criado com sucesso!', createCustomer })
+    return ctx.response.status(201).json({ message: 'Cliente criado com sucesso!', createCustomer })
+  }
+
+  public async update(ctx: HttpContextContract) {
+    const id = ctx.request.param('id')
+
+    const customerData = schema.create({
+      name: schema.string({ trim: true }, []),
+    })
+
+    const payload = await ctx.request.validate({
+      schema: customerData,
+    })
+
+    const findCustomer = await Customer.findBy('id', id)
+
+    if (!findCustomer) {
+      return ctx.response.status(404).json({ message: 'Cliente não encontrado' })
+    }
+
+    findCustomer.name = payload.name
+    await findCustomer.save()
+
+    ctx.response.status(200).json({ message: 'Cliente atualizado com sucesso!' })
   }
 
   public async destroy(ctx: HttpContextContract) {

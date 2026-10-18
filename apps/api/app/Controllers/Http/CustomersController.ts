@@ -6,7 +6,7 @@ export default class CustomersController {
   public async show(ctx: HttpContextContract) {
     const customer = await Customer.query().from('customers')
 
-    return ctx.response.status(201).json({ customer })
+    return ctx.response.status(201).json(customer)
   }
 
   public async showById(ctx: HttpContextContract) {

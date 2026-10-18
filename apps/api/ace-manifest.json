@@ -14,7 +14,7 @@
         "loadApp": true,
         "stayAlive": true
       },
-      "commandPath": "@adonisjs/core/build/commands/ListRoutes/index",
+      "commandPath": "@adonisjs/core/build/commands/ListRoutes/show",
       "commandName": "list:routes",
       "description": "List application routes",
       "args": [],

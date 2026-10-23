@@ -1,9 +1,13 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column } from '@ioc:Adonis/Lucid/Orm'
+import { BaseModel, column, HasMany, hasMany } from '@ioc:Adonis/Lucid/Orm'
+import Order from './Order'
 
 export default class Customer extends BaseModel {
   @column({ isPrimary: true })
   public id: number
+
+  @hasMany(() => Order)
+  public order: HasMany<typeof Order>
 
   @column()
   public name: string

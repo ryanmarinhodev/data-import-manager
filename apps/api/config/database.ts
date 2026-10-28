@@ -14,6 +14,13 @@ const databaseConfig: DatabaseConfig = {
       healthCheck: false,
       debug: false,
       migrations: { naturalSort: true },
+      pool: {
+        afterCreate(connection, done) {
+          connection.run('PRAGMA foreign_keys = ON', (error) => {
+            done(error, connection)
+          })
+        },
+      },
     },
   },
 }

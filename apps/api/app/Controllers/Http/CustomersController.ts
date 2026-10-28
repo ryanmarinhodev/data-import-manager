@@ -96,16 +96,26 @@ export default class CustomersController {
   }
 
   public async destroy(ctx: HttpContextContract) {
-    const id = ctx.request.param('id')
+    try {
+      const id = ctx.request.param('id')
 
-    const findCustomer = await Customer.findBy('id', id)
+      const findCustomer = await Customer.findBy('id', id)
 
-    if (!findCustomer) {
-      return ctx.response.status(404).json({ message: 'Cliente não encontrado' })
+      if (!findCustomer) {
+        return ctx.response.status(404).json({ message: 'Cliente não encontrado' })
+      }
+
+      await findCustomer.delete()
+
+      return ctx.response.status(200).json({ message: 'Cliente deletado com sucesso!' })
+    } catch (error) {
+      if (error.message.includes('FOREIGN KEY')) {
+        return ctx.response
+          .status(409)
+          .json({ message: 'Não é possível deletar um cliente com pedidos' })
+      }
+      console.error(error)
+      throw error
     }
-
-    await findCustomer.delete()
-
-    return ctx.response.status(200).json({ message: 'Cliente deletado com sucesso!' })
   }
 }

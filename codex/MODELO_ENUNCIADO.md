@@ -1,51 +1,25 @@
-# Desafio — [Título]
+# [Título da história]
 
-> **Dificuldade:** [intermediário / intermediário-avançado / avançado] · **Tempo:** [estimativa]
->
-> **Status:** não iniciado · **Início:** [data]
+**Como** [pessoa usuária], **quero** [capacidade], **para** [benefício].
 
-## Contexto e objetivo
+## Objetivo
 
-**Cenário profissional:** [Quem precisa da funcionalidade e por quê?]
-
-**Problema:** [O que falta ou precisa ser corrigido?]
-
-**Entrega principal:** [Comportamento esperado e endpoint, quando aplicável.]
-
-## Requisitos funcionais
-
-- [Comportamento que a funcionalidade deve oferecer.]
-
-## Requisitos técnicos
-
-- [Restrições, tecnologias e cuidados necessários, sem solução pronta.]
+[Entrega principal e endpoint, quando aplicável.]
 
 ## Critérios de aceite
 
-Marque somente após verificar o comportamento.
+- [ ] [Cenário válido → resultado esperado.]
+- [ ] [Regra de negócio ou restrição que precisa ser preservada.]
+- [ ] [Entrada inválida ou caso de borda → resultado esperado.]
 
-- [ ] [Entrada ou ação → resultado observável esperado.]
+**Foco do estudo:** [conceito necessário para resolver este problema].
 
-## Casos de borda para testar
+**Evidência para revisão:** [comportamento a demonstrar e decisão a explicar].
 
-- [ ] [Situação excepcional e comportamento esperado.]
+**Retomada breve:** [um conceito anterior aplicado aqui, se pertinente; sem repetir o desafio].
 
-## Organização do estudo
+**Tempo sugerido:** [estimativa flexível em sessões de até 1 hora].
 
-- **Tempo por sessão:** até 1 hora.
-- **Conceitos para consultar:** [conceitos relevantes].
-
-## Critérios de avaliação
-
-[Aspectos que serão avaliados e evidências esperadas.]
-
-## Registro rápido da tentativa
-
-- **O que implementei:**
-- **O que testei e resultados:**
-- **Dúvidas ou bloqueios:**
-- **O que falta:**
-
----
-
-Ao concluir, registre o resultado em `codex/EVOLUCAO.md`. Para iniciar outro desafio, copie este modelo para `Enunciado.md` e substitua os campos entre colchetes. Não altere o modelo ao preencher um exercício.
+<!-- Ao concluir, registre resultado e pendências em codex/EVOLUCAO.md.
+Substitua codex/Enunciado.md por uma cópia deste modelo para a próxima história.
+Registre pendências sem exigir polimento indefinido antes de avançar para assuntos independentes. -->

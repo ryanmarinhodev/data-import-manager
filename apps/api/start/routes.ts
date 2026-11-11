@@ -11,4 +11,6 @@ Route.group(() => {
   Route.delete('/customers/:id', 'CustomersController.destroy')
   Route.post('/customers/:customerId/orders', 'OrdersController.store')
   Route.patch('/orders/:id/status', 'OrdersController.update')
+  Route.post('/users', 'UsersController.store')
+  Route.get('/users', 'UsersController.index')
 })

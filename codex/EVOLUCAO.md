@@ -77,3 +77,33 @@ Ao final de uma sessão, quando solicitado, adicionar um registro com data, desa
 - **Estado restante:** destino `pendente` ainda aceito; repetição de cancelado ainda retorna apenas mensagem. Este último é um detalhe de contrato de menor impacto. Falhas da versão anterior permanecem no relatório como histórico, não como nova execução após a correção. Nota original preservada; não houve nova avaliação completa solicitada.
 - **Direção reafirmada:** laboratório de conhecimento e retenção, sem compromisso de completar ou polir um produto comercial. Avançar com pendências documentadas e retomar conceitos brevemente em novas histórias. Revisão do guia removeu conflitos sobre expansão de escopo e fixou `codex/Enunciado.md` como fonte vigente.
 - **Nova história preparada:** cadastro de usuários com hash de senha; retoma validação, unicidade e persistência no contexto de credenciais. Login, token e proteção de rotas vêm em seguida.
+
+
+## 2026-11-11 — Cadastro de usuários e hash de senha
+
+- **Situação da entrega:** história encerrada para avanço, com pendências. Revisão de código confirma `POST /users`, validação de nome/e-mail/senha, trim de nome/e-mail, normalização de e-mail, hash bcrypt antes da persistência, resposta 201 e tratamento de duplicidade com 409. Migration declara e-mail UNIQUE e NOT NULL; model oculta password na serialização. Aplicação das migrations e comportamento HTTP não foram verificados nesta sessão.
+- **Correções confirmadas:** senha deixou de receber trim; chamada de comparação foi removida do cadastro. O aluno explicou que comparar a senha com o hash recém-gerado não pertence ao fluxo de criação e que a comparação será necessária na autenticação. Essa distinção foi demonstrada no raciocínio e no código atual.
+- **Assistência recebida:** o mentor instalou Node compatível, bcrypt e seus tipos, diagnosticou o erro de instalação e substituiu o import incompatível por bcrypt. Também forneceu a integração que gera o hash e o salva. Portanto, esse trecho não comprova implementação independente pelo aluno; sua análise posterior demonstra compreensão da separação entre cadastro e verificação de credenciais. Consulta de sintaxe não é penalizada.
+- **Ajuste de contrato:** o enunciado anterior pedia hashing do Adonis; foi adotado bcrypt diretamente com assistência. A alternativa atende ao objetivo pedagógico de persistir hash, mas não demonstra domínio do serviço de hashing do framework.
+- **Conceitos demonstrados nesta etapa:** distinção entre senha recebida e valor persistido; preservação dos caracteres da senha; separação entre cadastro e autenticação; seleção de campos na resposta. Validação, persistência, normalização e unicidade foram reaplicadas, sem necessidade de novo exercício de CRUD.
+- **Pendências verificadas:** resposta 201 não inclui o ID exigido; migration de password permite NULL, embora o cadastro atual exija senha; não foi apresentada evidência da comparação correta/incorreta com o hash recuperado do banco. O `console.error(error)` genérico merece revisão antes de considerar atendida a exigência de não registrar credenciais: não houve inspeção dos logs em cenários de falha. Marcações de conclusão no enunciado anterior não são prova de aceite.
+- **Verificação:** typecheck da API executado nesta sessão e aprovado. Os testes encontrados cobrem apenas a rota inicial e conexão SQLite; não há testes de cadastro ou autenticação no material revisado. O teste isolado do bcrypt executado anteriormente pelo mentor confirmou a biblioteca, não o fluxo HTTP nem a persistência do cadastro. API e migrations não executadas nesta avaliação.
+
+### Avaliação desta etapa
+
+Notas restritas às evidências disponíveis, sem pressupor domínio completo ou atribuir ao aluno código fornecido pelo mentor.
+
+| Dimensão | Avaliação | Evidência |
+| --- | --- | --- |
+| Autonomia | 7/10 | Identificou o papel inadequado do compare e fez ajustes posteriores; integração do hash recebeu implementação direta do mentor. |
+| Raciocínio lógico | 8/10 | Distinguiu uma verificação de teste da responsabilidade do cadastro e do futuro login. |
+| AdonisJS e TypeScript | 7/10 | Reaplicou schema e Lucid; compatibilidade do import e uso da biblioteca exigiram assistência. |
+| Organização | 7,5/10 | Fluxo curto: validação, hash, persistência e resposta; comparação desnecessária removida. |
+| Qualidade do código | 7/10 | Preserva senha e oculta hash; resposta ainda não cumpre integralmente o contrato. |
+| Erros e casos de borda | 6,5/10 | Duplicidade tratada no código; falta comprovação dos cenários inválidos e revisão dos logs de erro. |
+| Investigação | 7/10 | Trouxe o erro concreto de import e questionou a finalidade do compare; diagnóstico do ambiente foi conduzido pelo mentor. |
+| Testes e confiabilidade | Não avaliados | Ausência de evidências de testes do aluno para os critérios desta história. |
+
+- **Nota de evolução:** 7,5/10, síntese qualitativa, não média mecânica. Há compreensão suficiente para avançar ao uso das credenciais; ainda não há evidência de autonomia completa na integração nem de confiabilidade funcional.
+- **Próximo objetivo:** login com emissão de token e falhas de autenticação, usando os usuários persistidos. A verificação da senha será aplicada a um problema novo, sem repetir cadastro. Exigir testes automatizados dos caminhos de sucesso e falha para trabalhar a lacuna recorrente de evidências.
+- **Escopo posterior:** uso do token em rotas protegidas, identificação do usuário autenticado, logout e autorização serão histórias seguintes. Pendências antigas permanecem registradas; não exigir seu polimento integral para iniciar login.

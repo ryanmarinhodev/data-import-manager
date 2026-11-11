@@ -1,6 +1,7 @@
 import { schema, rules } from '@ioc:Adonis/Core/Validator'
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import User from 'App/Models/User'
+import bcrypt from 'bcrypt'
 
 export default class UsersController {
   public async store(ctx: HttpContextContract) {
@@ -11,16 +12,16 @@ export default class UsersController {
           rules.email(),
           rules.normalizeEmail({ allLowercase: true }),
         ]),
-        password: schema.string({ trim: true }, [rules.maxLength(100)]),
+        password: schema.string([rules.maxLength(100)]),
       })
 
       const payload = await ctx.request.validate({
         schema: dataUsers,
       })
 
-      const data = await User.create(payload)
+      const hashPassword = await bcrypt.hash(payload.password, 10)
 
-      console.log(data)
+      await User.create({ ...payload, password: hashPassword })
 
       ctx.response.status(201).json({
         message: 'Usuário criado com sucesso!',

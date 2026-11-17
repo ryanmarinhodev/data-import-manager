@@ -10,4 +10,5 @@ export default Env.rules({
   CORS_ORIGIN: Env.schema.string.optional(),
   DB_CONNECTION: Env.schema.enum(['sqlite'] as const),
   SQLITE_DB_PATH: Env.schema.string.optional(),
+  JWT_SECRET: Env.schema.string.optional(),
 })

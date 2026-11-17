@@ -13,4 +13,5 @@ Route.group(() => {
   Route.patch('/orders/:id/status', 'OrdersController.update')
   Route.post('/users', 'UsersController.store')
   Route.get('/users', 'UsersController.index')
+  Route.post('/login', 'LoginController.index')
 })

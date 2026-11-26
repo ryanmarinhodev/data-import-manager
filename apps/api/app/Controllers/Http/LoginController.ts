@@ -46,4 +46,40 @@ export default class LoginController {
       token: { type: 'Bearer', value: token, expiresIn: '1h' },
     })
   }
+
+  public async me(ctx: HttpContextContract) {
+    const authorization = ctx.request.header('authorization')
+
+    if (!authorization) {
+      return ctx.response.status(401).json({ message: 'Informe o token' })
+    }
+
+    const bearer = authorization?.split(' ')[0]
+    const token = authorization?.split(' ')[1]
+
+    if (bearer !== 'Bearer' || !token) {
+      return ctx.response.status(401).json({ message: 'O token espera Bearer e um token válido' })
+    }
+
+    let decode
+
+    try {
+      decode = jwt.verify(token, Env.get('JWT_SECRET'))
+    } catch (error) {
+      console.error('error', error)
+      return ctx.response.status(401).json({ message: 'Deu erro' })
+    }
+
+    if (typeof decode !== 'object' || typeof decode.sub !== 'string') {
+      return ctx.response.status(401).json({ message: 'Dados do token ou id do usuário inválido' })
+    }
+
+    const user = await User.findBy('id', decode.sub)
+
+    if (!user) {
+      return ctx.response.status(401).json({ message: 'Usuário não encontrado' })
+    }
+
+    return ctx.response.json({ id: user.id, name: user.name, email: user.email })
+  }
 }

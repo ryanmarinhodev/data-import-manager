@@ -14,4 +14,5 @@ Route.group(() => {
   Route.post('/users', 'UsersController.store')
   Route.get('/users', 'UsersController.index')
   Route.post('/login', 'LoginController.index')
+  Route.get('/me', 'LoginController.me')
 })
